@@ -1,0 +1,1 @@
+INSERT INTO club (id, name, location, founded_year) VALUES (1, 'Stormers', 'Kaap', 1995);
