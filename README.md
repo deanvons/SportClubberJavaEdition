@@ -16,25 +16,15 @@
 
 ### Club
 
-* `02a-club-test` → Write test: can create and persist `Club`.
-* `02b-club-impl` → Implement `Club` entity (JPA annotations, one-to-many with `Team`).
+* `02a-club-impl` → Implement `Club` entity
 
 ### Team
 
-* `02c-team-test` → Write test: can create `Team` linked to a `Club`.
-* `02d-team-impl` → Implement `Team` entity with `@ManyToOne` to `Club` and `@ManyToMany` with `Player`.
+* `02b-team-impl` → Implement `Team` entity with `@ManyToOne` to `Club`. Update `Club` `@OneToMany`.
 
 ### Player
 
-* `02e-player-test` → Write test: can create `Player` and associate with multiple `Teams`.
-* `02f-player-impl` → Implement `Player` entity with `@ManyToMany`.
-
-
-### Rule
-
-* `02g-rule-test` → Write test: can create and persist a `Rule`, optionally linked to a `Team`.
-* `02h-rule-impl` → Implement `Rule` entity (simple value object or full entity depending on persistence needs).
-
+* `02c-player-impl` → Implement `Player` entity with `@ManyToMany` to `Team`. Update `Team` `@ManyToMany`.
 
 ## 03-repositories
 - `03a-repo-tests` → Write tests for repositories (find by labelId, etc).
