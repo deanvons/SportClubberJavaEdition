@@ -7,11 +7,10 @@
 ## 🚀 Branch Sequence with TDD Granularity
 
 ## 00-setup-project
-- `00-setup-project` → Initial Spring Boot project, test framework set up.
+`00-setup-project` → Initial Spring Boot project, test framework set up.
 
 ## 01-db-config
-- `01a-db-test` → Write failing test to check DB connectivity.
-- `01b-db-config` → Implement DB config to make test pass.
+ → Implement DB config
 
 ## 02-entities-models
 ### MusicLabel
