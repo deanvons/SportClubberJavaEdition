@@ -14,6 +14,7 @@
 
 ## 02-entities-models
 ### MusicLabel
+🙏
 - `02a-musiclabel-test` → Write test: can create and persist MusicLabel.
 - `02b-musiclabel-impl` → Implement `MusicLabel` entity (JPA annotations).
 
