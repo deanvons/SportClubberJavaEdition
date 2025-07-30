@@ -1,5 +1,7 @@
 package no.loopacademy.SportClubbingAPI.services;
 
+import jakarta.persistence.EntityNotFoundException;
+import no.loopacademy.SportClubbingAPI.exceptions.NotFoundException;
 import no.loopacademy.SportClubbingAPI.models.Club;
 import no.loopacademy.SportClubbingAPI.repositories.ClubRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +29,8 @@ public class ClubServiceImpl implements ClubService{
      * @return
      */
     @Override
-    public Club getById(int id) {
-        // TODO: Throw custom NotFound exception
-        return clubRepository.findById(id).orElseThrow(RuntimeException::new);
+    public Club getById(int id) throws NotFoundException {
+        return clubRepository.findById(id).orElseThrow(() -> new NotFoundException("Club not found with id: " + id));
     }
 
     /**
@@ -46,12 +47,11 @@ public class ClubServiceImpl implements ClubService{
      * @return
      */
     @Override
-    public Club update(Club existingClub) throws RuntimeException {
+    public Club update(Club existingClub) throws NotFoundException {
         if(clubRepository.existsById(existingClub.getId())) {
             return clubRepository.save(existingClub);
         } else {
-            // TODO: Replace with custom NotFound exception
-            throw new RuntimeException("No entity exists with that ID");
+            throw new NotFoundException("Club not found with id: " + existingClub.getId());
         }
     }
 
@@ -59,13 +59,12 @@ public class ClubServiceImpl implements ClubService{
      * @param id
      */
     @Override
-    public void deleteById(int id) throws RuntimeException {
+    public void deleteById(int id) throws NotFoundException {
         if(clubRepository.existsById(id)) {
             // TODO: Set relationships to null, OR reject deletion if a team is in the club
             clubRepository.deleteById(id);
         } else {
-            // TODO: Replace with custom NotFound exception
-            throw new RuntimeException("No entity exists with that ID");
+            throw new NotFoundException("Club not found with id: " + id);
         }
     }
 }
