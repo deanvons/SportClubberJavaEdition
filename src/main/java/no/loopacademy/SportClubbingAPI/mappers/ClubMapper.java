@@ -9,5 +9,6 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ClubMapper {
     ClubDto clubToClubDto(Club club);
+    Club clubDtoToClub(ClubDto club);
     List<ClubDto> clubListToDtoList(List<Club> clubs);
 }

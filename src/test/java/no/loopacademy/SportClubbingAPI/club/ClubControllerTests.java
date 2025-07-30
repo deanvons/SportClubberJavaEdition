@@ -110,4 +110,25 @@ public class ClubControllerTests {
                         .content(objectMapper.writeValueAsString(testClub)))
                 .andExpect(status().isBadRequest());
     }
+
+    // @Valid automatically triggers a 400 Bad Request if the request body violates any validation constraints (like @NotBlank, @Size, etc.)
+    @Test
+    void shouldRejectEmptyName() throws Exception {
+        testClub.setName(""); // invalid
+        mockMvc.perform(post("/api/clubs")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(testClub)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void shouldRejectNameTooLong() throws Exception {
+        testClub.setName("A".repeat(101)); // exceeds @Size max
+        mockMvc.perform(post("/api/clubs")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(testClub)))
+                .andExpect(status().isBadRequest());
+    }
+
+    // TODO: FoundedYear in future
 }

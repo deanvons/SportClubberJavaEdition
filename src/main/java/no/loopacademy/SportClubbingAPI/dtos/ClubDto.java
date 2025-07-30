@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+// TODO: Split into operational DTOs (Read, Add, Edit)
 @Data
 public class ClubDto {
     private int id;

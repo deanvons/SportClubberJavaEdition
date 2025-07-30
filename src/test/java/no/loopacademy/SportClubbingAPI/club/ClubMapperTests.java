@@ -69,4 +69,23 @@ public class ClubMapperTests {
         assertEquals("Durban", dtos.get(1).getLocation());
     }
 
+    @Test
+    void shouldMapDtoToEntity() {
+        // Arrange
+        ClubDto dto = new ClubDto();
+        dto.setId(3);
+        dto.setName("Bulls");
+        dto.setLocation("Pretoria");
+        dto.setFoundedYear(1990);
+
+        // Act
+        Club club = clubMapper.clubDtoToClub(dto);
+
+        // Assert
+        assertEquals(dto.getId(), club.getId());
+        assertEquals(dto.getName(), club.getName());
+        assertEquals(dto.getLocation(), club.getLocation());
+        assertEquals(dto.getFoundedYear(), club.getFoundedYear());
+    }
+
 }
