@@ -41,9 +41,20 @@ public class ClubRepositoryTests {
         int expectedNewClubFoundedYear = 1960;
 
         // Act
+        Club sharks = new Club();
+        sharks.setName(expectedNewClubName);
+        sharks.setLocation(expectedNewClubLocation);
+        sharks.setFoundedYear(expectedNewClubFoundedYear);
 
+        clubRepository.save(sharks);
+
+        int sharksId = sharks.getId();
+
+        Club actualSharks = clubRepository.findById(sharksId).orElseThrow();
         // Assert
-
+        assertEquals(expectedNewClubName, actualSharks.getName());
+        assertEquals(expectedNewClubLocation,actualSharks.getLocation());
+        assertEquals(expectedNewClubFoundedYear,actualSharks.getFoundedYear());
 
     }
 }

@@ -1,1 +1,2 @@
-INSERT INTO club (id, name, location, founded_year) VALUES (1, 'Stormers', 'Kaap', 1995);
+-- Can exclude the id, since we have a generation strategy in our entity. This will avoid the first entity added being id:1 causing a conflict.
+INSERT INTO club (name, location, founded_year) VALUES ('Stormers', 'Kaap', 1995);
